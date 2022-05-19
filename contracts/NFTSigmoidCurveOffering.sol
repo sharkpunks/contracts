@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: WTFPL
 
-pragma solidity 0.8.13;
+pragma solidity ^0.8.13;
 
 import "./interfaces/INFT.sol";
 
-contract NFTSigmoidCurverOffering {
+contract NFTSigmoidCurveOffering {
     uint256 public constant TOKEN_ID_MIN = 1083;
     uint256 public constant TOKEN_ID_MAX = 6900;
     uint256 public constant INITIAL_PRICE = 333 * 10**14;
@@ -75,6 +75,7 @@ contract NFTSigmoidCurverOffering {
         tokenId = _tokenId;
 
         require(msg.value >= totalPrice, "SCO: INSUFFICIENT_ETH");
+        payable(vault).transfer(totalPrice);
         if (msg.value > totalPrice) {
             payable(msg.sender).transfer(msg.value - totalPrice);
         }
@@ -99,6 +100,7 @@ contract NFTSigmoidCurverOffering {
         if (discount) price -= (price * DISCOUNT_PERCENTAGE) / 100;
 
         require(msg.value >= price, "SCO: INSUFFICIENT_ETH");
+        payable(vault).transfer(price);
         if (msg.value > price) {
             payable(msg.sender).transfer(msg.value - price);
         }
