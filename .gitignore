@@ -6,9 +6,6 @@ cache/
 artifacts/
 abis/
 
-# Deployments
-deployments/
-
 # Typechain
 typechain/
 

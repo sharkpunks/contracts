@@ -1,0 +1,401 @@
+{
+  "address": "0x2F346020f59c3262131e8E85D81A16d8a031904f",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_token",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_vault",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_discountToken",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "Burn",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        }
+      ],
+      "name": "Mint",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "DISCOUNT_PERCENTAGE",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "INFLATION_BASE",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "INFLATION_RATE",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "INITIAL_PRICE",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "TOKEN_ID_MAX",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "TOKEN_ID_MIN",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "label",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "data",
+          "type": "bytes32"
+        }
+      ],
+      "name": "burn",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "discountToken",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        }
+      ],
+      "name": "mint",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "length",
+          "type": "uint256"
+        }
+      ],
+      "name": "mintBatch",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "length",
+          "type": "uint256"
+        }
+      ],
+      "name": "mintBatchDiscounted",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        }
+      ],
+      "name": "mintDiscounted",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "onERC721Received",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "priceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "token",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "tokenId",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "vault",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xfa4c7e9a399223813c6898b32e6f3018f3265bcd5f2bb31bc2770f9ebe6fb536",
+  "receipt": {
+    "to": null,
+    "from": "0x5b8C253517b6Bd003369173109693B01cb6841B5",
+    "contractAddress": "0x2F346020f59c3262131e8E85D81A16d8a031904f",
+    "transactionIndex": 143,
+    "gasUsed": "978503",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x71b2371b46482db98d84ffe9768e4c28e14af1405eead5ccb5cfe2198fc346f0",
+    "transactionHash": "0xfa4c7e9a399223813c6898b32e6f3018f3265bcd5f2bb31bc2770f9ebe6fb536",
+    "logs": [],
+    "blockNumber": 14810426,
+    "cumulativeGasUsed": "11886302",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0xa59a5b0c946086d6884455a6a556729d747d16d3",
+    "0x4B6B8D9F1DA1E550AA9DaE49ECE491B642946Acd",
+    "0xb8b07d0f2990ddd5b99b6db59dd8356ca2b1302d"
+  ],
+  "solcInputHash": "27bc54ccad9d2b3a22a427c53d23acad",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.13+commit.abaa5c0e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_token\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_vault\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_discountToken\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Burn\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"}],\"name\":\"Mint\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"DISCOUNT_PERCENTAGE\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"INFLATION_BASE\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"INFLATION_RATE\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"INITIAL_PRICE\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"TOKEN_ID_MAX\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"TOKEN_ID_MIN\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"label\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"data\",\"type\":\"bytes32\"}],\"name\":\"burn\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"discountToken\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"mint\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"length\",\"type\":\"uint256\"}],\"name\":\"mintBatch\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"length\",\"type\":\"uint256\"}],\"name\":\"mintBatchDiscounted\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"mintDiscounted\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC721Received\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"priceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"token\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"tokenId\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"vault\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/NFTSigmoidCurveOffering.sol\":\"NFTSigmoidCurveOffering\"},\"evmVersion\":\"london\",\"libraries\":{\":__CACHE_BREAKER__\":\"0x00000000d41867734bbee4c6863d9255b2b06ac1\"},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.6.0) (token/ERC721/IERC721Receiver.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @title ERC721 token receiver interface\\n * @dev Interface for any contract that wants to support safeTransfers\\n * from ERC721 asset contracts.\\n */\\ninterface IERC721Receiver {\\n    /**\\n     * @dev Whenever an {IERC721} `tokenId` token is transferred to this contract via {IERC721-safeTransferFrom}\\n     * by `operator` from `from`, this function is called.\\n     *\\n     * It must return its Solidity selector to confirm the token transfer.\\n     * If any other value is returned or the interface is not implemented by the recipient, the transfer will be reverted.\\n     *\\n     * The selector can be obtained in Solidity with `IERC721Receiver.onERC721Received.selector`.\\n     */\\n    function onERC721Received(\\n        address operator,\\n        address from,\\n        uint256 tokenId,\\n        bytes calldata data\\n    ) external returns (bytes4);\\n}\\n\",\"keccak256\":\"0xa82b58eca1ee256be466e536706850163d2ec7821945abd6b4778cfb3bee37da\",\"license\":\"MIT\"},\"contracts/NFTSigmoidCurveOffering.sol\":{\"content\":\"// SPDX-License-Identifier: WTFPL\\n\\npragma solidity ^0.8.13;\\n\\nimport \\\"@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol\\\";\\n\\nimport \\\"./interfaces/INFT.sol\\\";\\nimport \\\"./interfaces/IETHVault.sol\\\";\\n\\ncontract NFTSigmoidCurveOffering is IERC721Receiver {\\n    uint256 public constant TOKEN_ID_MIN = 1083;\\n    uint256 public constant TOKEN_ID_MAX = 6900;\\n    uint256 public constant INITIAL_PRICE = 333 * 10**14;\\n    uint256 public constant INFLATION_RATE = 1002496;\\n    uint256 public constant INFLATION_BASE = 1000000;\\n    uint256 public constant DISCOUNT_PERCENTAGE = 10;\\n    uint256 internal constant FINAL_PRICE = 93716465580792648570;\\n    uint256 internal constant INFLECTION_POINT = 3992;\\n\\n    address public immutable vault;\\n    address public immutable token;\\n    address public immutable discountToken;\\n\\n    uint256 public tokenId;\\n    mapping(uint256 => uint256) public priceOf;\\n\\n    event Mint(uint256 indexed tokenId, uint256 price);\\n    event Burn(uint256 indexed tokenId, uint256 amount);\\n\\n    modifier discountApplied {\\n        require(INFT(discountToken).balanceOf(msg.sender) > 0, \\\"SCO: DISCOUNT_TOKEN_NOT_OWNED\\\");\\n        _;\\n    }\\n\\n    constructor(\\n        address _token,\\n        address _vault,\\n        address _discountToken\\n    ) {\\n        token = _token;\\n        vault = _vault;\\n        discountToken = _discountToken;\\n\\n        tokenId = TOKEN_ID_MIN;\\n        priceOf[TOKEN_ID_MIN] = INITIAL_PRICE;\\n    }\\n\\n    function mintBatchDiscounted(address to, uint256 length) external payable discountApplied {\\n        _mintBatch(to, length, true);\\n    }\\n\\n    function mintBatch(address to, uint256 length) external payable {\\n        _mintBatch(to, length, false);\\n    }\\n\\n    function _mintBatch(\\n        address to,\\n        uint256 length,\\n        bool discount\\n    ) internal {\\n        require(length > 0, \\\"SCO: INVALID_LENGTH\\\");\\n\\n        uint256 _tokenId = tokenId;\\n\\n        uint256 totalPrice;\\n        uint256[] memory tokenIds = new uint256[](length);\\n\\n        for (uint256 i = 0; i < length; i++) {\\n            require(_tokenId < TOKEN_ID_MAX, \\\"SCO: ALL_MINTED\\\");\\n\\n            uint256 price = _price(_tokenId);\\n            if (discount) price -= (price * DISCOUNT_PERCENTAGE) / 100;\\n            totalPrice += price;\\n\\n            emit Mint(_tokenId, price);\\n\\n            tokenIds[i] = _tokenId;\\n            _tokenId++;\\n        }\\n        tokenId = _tokenId;\\n\\n        require(msg.value >= totalPrice, \\\"SCO: INSUFFICIENT_ETH\\\");\\n        payable(vault).transfer(totalPrice);\\n        if (msg.value > totalPrice) {\\n            payable(msg.sender).transfer(msg.value - totalPrice);\\n        }\\n\\n        INFT(token).mintBatch(to, tokenIds, \\\"\\\");\\n    }\\n\\n    function mintDiscounted(address to) external payable discountApplied {\\n        _mint(to, true);\\n    }\\n\\n    function mint(address to) external payable {\\n        _mint(to, false);\\n    }\\n\\n    function _mint(address to, bool discount) internal {\\n        uint256 _tokenId = tokenId;\\n        require(_tokenId < TOKEN_ID_MAX, \\\"SCO: ALL_MINTED\\\");\\n        tokenId = _tokenId + 1;\\n\\n        uint256 price = _price(_tokenId);\\n        if (discount) price -= (price * DISCOUNT_PERCENTAGE) / 100;\\n\\n        require(msg.value >= price, \\\"SCO: INSUFFICIENT_ETH\\\");\\n        payable(vault).transfer(price);\\n        if (msg.value > price) {\\n            payable(msg.sender).transfer(msg.value - price);\\n        }\\n\\n        emit Mint(_tokenId, price);\\n\\n        INFT(token).mint(to, _tokenId, \\\"\\\");\\n    }\\n\\n    function _price(uint256 _tokenId) internal returns (uint256 price) {\\n        if (_tokenId < INFLECTION_POINT) {\\n            price = priceOf[_tokenId];\\n            priceOf[_tokenId + 1] = (price * INFLATION_RATE) / INFLATION_BASE;\\n        } else {\\n            price = FINAL_PRICE - priceOf[INFLECTION_POINT * 2 - 2 - _tokenId];\\n            if (_tokenId > INFLECTION_POINT) {\\n                priceOf[_tokenId] = price;\\n            }\\n        }\\n    }\\n\\n    function burn(\\n        uint256 _tokenId,\\n        uint256 label,\\n        bytes32 data\\n    ) external {\\n        INFT(token).safeTransferFrom(msg.sender, address(this), _tokenId);\\n        INFT(token).burn(_tokenId, label, data);\\n\\n        uint256 amount = priceOf[_tokenId] / 3;\\n        IETHVault(vault).withdraw(amount, msg.sender);\\n\\n        emit Burn(_tokenId, amount);\\n    }\\n\\n    function onERC721Received(\\n        address,\\n        address,\\n        uint256,\\n        bytes calldata\\n    ) external pure override returns (bytes4) {\\n        return IERC721Receiver.onERC721Received.selector;\\n    }\\n}\\n\",\"keccak256\":\"0x39549fad760f73ca34523020f87df555e801682d4bc59321478e88146016f8f9\",\"license\":\"WTFPL\"},\"contracts/interfaces/IETHVault.sol\":{\"content\":\"// SPDX-License-Identifier: WTFPL\\n\\npragma solidity >=0.5.0;\\n\\ninterface IETHVault {\\n    event Receive(address indexed sender, uint256 amount);\\n    event SetOperator(address indexed account, bool isOperator);\\n    event Withdraw(address indexed operator, uint256 amount, address to);\\n\\n    function isOperator(address account) external view returns (bool);\\n\\n    function setOperator(address account, bool _isOperator) external;\\n\\n    function withdraw(uint256 amount, address to) external;\\n}\\n\",\"keccak256\":\"0x278e06a7a5879b4935e13f006b3103622dcd11af36bfce9c9917970d8d3a43f8\",\"license\":\"WTFPL\"},\"contracts/interfaces/INFT.sol\":{\"content\":\"// SPDX-License-Identifier: WTFPL\\n\\npragma solidity >=0.5.0;\\n\\ninterface INFT {\\n    function balanceOf(address owner) external view returns (uint256 balance);\\n\\n    function safeTransferFrom(\\n        address from,\\n        address to,\\n        uint256 tokenId\\n    ) external;\\n\\n    function mint(\\n        address to,\\n        uint256 tokenId,\\n        bytes calldata data\\n    ) external;\\n\\n    function mintBatch(\\n        address to,\\n        uint256[] calldata tokenIds,\\n        bytes calldata data\\n    ) external;\\n\\n    function burn(\\n        uint256 tokenId,\\n        uint256 label,\\n        bytes32 data\\n    ) external;\\n}\\n\",\"keccak256\":\"0x9aa2fed275df10e41f52ba5e8e2f7ccdb4ca6b07b8c5ed804dafc2a30218a3f8\",\"license\":\"WTFPL\"}},\"version\":1}",
+  "bytecode": "0x60e060405234801561001057600080fd5b5060405161113a38038061113a83398101604081905261002f916100a0565b6001600160a01b0392831660a0529082166080521660c05261043b600081815552600160205266764e2c6f0540007fd8c0858d087ee1516816dc8cc5f06fc53d9b020394ff6a6654e272318f08f37b556100e3565b80516001600160a01b038116811461009b57600080fd5b919050565b6000806000606084860312156100b557600080fd5b6100be84610084565b92506100cc60208501610084565b91506100da60408501610084565b90509250925092565b60805160a05160c051610fe9610151600039600081816102a80152818161056c01526106540152600081816103280152818161038a01528181610410015281816109b30152610bfc0152600081816102f4015281816104b1015281816109120152610b040152610fe96000f3fe6080604052600436106100fe5760003560e01c8063ae42298811610095578063cd38347f11610064578063cd38347f1461026c578063debb2de114610283578063ea61226c14610296578063fbfa77cf146102e2578063fc0c546a1461031657600080fd5b8063ae42298814610200578063af760d6c14610213578063b381a81114610228578063b9186d7d1461023f57600080fd5b80636a627842116100d15780636a6278421461019c5780637c5e2795146101af5780639153e548146101ca5780639443792c146101e057600080fd5b8063150b7a021461010357806317d70f7c1461014d578063248b71fc14610171578063541508ed14610186575b600080fd5b34801561010f57600080fd5b5061012f61011e366004610d3d565b630a85bd0160e11b95945050505050565b6040516001600160e01b031990911681526020015b60405180910390f35b34801561015957600080fd5b5061016360005481565b604051908152602001610144565b61018461017f366004610dd8565b61034a565b005b34801561019257600080fd5b5061016361043b81565b6101846101aa366004610e02565b61035a565b3480156101bb57600080fd5b5061016366764e2c6f05400081565b3480156101d657600080fd5b50610163611af481565b3480156101ec57600080fd5b506101846101fb366004610e24565b610368565b61018461020e366004610e02565b610554565b34801561021f57600080fd5b50610163600a81565b34801561023457600080fd5b50610163620f4c0081565b34801561024b57600080fd5b5061016361025a366004610e50565b60016020526000908152604090205481565b34801561027857600080fd5b50610163620f424081565b610184610291366004610dd8565b61063c565b3480156102a257600080fd5b506102ca7f000000000000000000000000000000000000000000000000000000000000000081565b6040516001600160a01b039091168152602001610144565b3480156102ee57600080fd5b506102ca7f000000000000000000000000000000000000000000000000000000000000000081565b34801561032257600080fd5b506102ca7f000000000000000000000000000000000000000000000000000000000000000081565b6103568282600061071c565b5050565b610365816000610a24565b50565b604051632142170760e11b8152336004820152306024820152604481018490527f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316906342842e0e90606401600060405180830381600087803b1580156103d657600080fd5b505af11580156103ea573d6000803e3d6000fd5b5050604051632510de4b60e21b81526004810186905260248101859052604481018490527f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03169250639443792c9150606401600060405180830381600087803b15801561045e57600080fd5b505af1158015610472573d6000803e3d6000fd5b50505060008481526001602052604081205490915061049390600390610e7f565b604051627b8a6760e11b8152600481018290523360248201529091507f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03169062f714ce90604401600060405180830381600087803b1580156104fc57600080fd5b505af1158015610510573d6000803e3d6000fd5b50505050837f410c5c259085cde81fedf70c1aa308ec839373c26e9b7ada6560a2aca0254eb68260405161054691815260200190565b60405180910390a250505050565b6040516370a0823160e01b81523360048201526000907f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316906370a0823190602401602060405180830381865afa1580156105bb573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906105df9190610ea1565b116106315760405162461bcd60e51b815260206004820152601d60248201527f53434f3a20444953434f554e545f544f4b454e5f4e4f545f4f574e454400000060448201526064015b60405180910390fd5b610365816001610a24565b6040516370a0823160e01b81523360048201526000907f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316906370a0823190602401602060405180830381865afa1580156106a3573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906106c79190610ea1565b116107145760405162461bcd60e51b815260206004820152601d60248201527f53434f3a20444953434f554e545f544f4b454e5f4e4f545f4f574e45440000006044820152606401610628565b610356828260015b600082116107625760405162461bcd60e51b81526020600482015260136024820152720a6869e7440929cac82989288be988a9c8ea89606b1b6044820152606401610628565b6000805490808467ffffffffffffffff81111561078157610781610eba565b6040519080825280602002602001820160405280156107aa578160200160208202803683370190505b50905060005b858110156108b757611af484106107fb5760405162461bcd60e51b815260206004820152600f60248201526e14d0d3ce8810531317d35253951151608a1b6044820152606401610628565b600061080685610c5e565b9050851561083257606461081b600a83610ed0565b6108259190610e7f565b61082f9082610eef565b90505b61083c8185610f06565b9350847fcc9c58b575eabd3f6a1ee653e91fcea3ff546867ffc3782a3bbca1f9b6dbb8df8260405161087091815260200190565b60405180910390a28483838151811061088b5761088b610f1e565b6020908102919091010152846108a081610f34565b9550505080806108af90610f34565b9150506107b0565b506000839055348211156109055760405162461bcd60e51b81526020600482015260156024820152740a6869e7440929ca6aa8c8c9286928a9ca8be8aa89605b1b6044820152606401610628565b6040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000169083156108fc029084906000818181858888f1935050505015801561095b573d6000803e3d6000fd5b508134111561099c57336108fc6109728434610eef565b6040518115909202916000818181858888f1935050505015801561099a573d6000803e3d6000fd5b505b604051631143124160e11b81526001600160a01b037f000000000000000000000000000000000000000000000000000000000000000016906322862482906109ea9089908590600401610f4d565b600060405180830381600087803b158015610a0457600080fd5b505af1158015610a18573d6000803e3d6000fd5b50505050505050505050565b600054611af48110610a6a5760405162461bcd60e51b815260206004820152600f60248201526e14d0d3ce8810531317d35253951151608a1b6044820152606401610628565b610a75816001610f06565b6000908155610a8382610c5e565b90508215610aaf576064610a98600a83610ed0565b610aa29190610e7f565b610aac9082610eef565b90505b80341015610af75760405162461bcd60e51b81526020600482015260156024820152740a6869e7440929ca6aa8c8c9286928a9ca8be8aa89605b1b6044820152606401610628565b6040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000169082156108fc029083906000818181858888f19350505050158015610b4d573d6000803e3d6000fd5b5080341115610b8e57336108fc610b648334610eef565b6040518115909202916000818181858888f19350505050158015610b8c573d6000803e3d6000fd5b505b817fcc9c58b575eabd3f6a1ee653e91fcea3ff546867ffc3782a3bbca1f9b6dbb8df82604051610bc091815260200190565b60405180910390a26040516394d008ef60e01b81526001600160a01b0385811660048301526024820184905260606044830152600060648301527f000000000000000000000000000000000000000000000000000000000000000016906394d008ef90608401600060405180830381600087803b158015610c4057600080fd5b505af1158015610c54573d6000803e3d6000fd5b5050505050505050565b6000610f98821015610cb95750600081815260016020526040902054620f4240610c8b620f4c0083610ed0565b610c959190610e7f565b60016000610ca38583610f06565b8152602081019190915260400160002055919050565b60016000836002610ccc610f9882610ed0565b610cd69190610eef565b610ce09190610eef565b81526020019081526020016000205468051493c4ea2444937a610d039190610eef565b9050610f98821115610d215760008281526001602052604090208190555b919050565b80356001600160a01b0381168114610d2157600080fd5b600080600080600060808688031215610d5557600080fd5b610d5e86610d26565b9450610d6c60208701610d26565b935060408601359250606086013567ffffffffffffffff80821115610d9057600080fd5b818801915088601f830112610da457600080fd5b813581811115610db357600080fd5b896020828501011115610dc557600080fd5b9699959850939650602001949392505050565b60008060408385031215610deb57600080fd5b610df483610d26565b946020939093013593505050565b600060208284031215610e1457600080fd5b610e1d82610d26565b9392505050565b600080600060608486031215610e3957600080fd5b505081359360208301359350604090920135919050565b600060208284031215610e6257600080fd5b5035919050565b634e487b7160e01b600052601160045260246000fd5b600082610e9c57634e487b7160e01b600052601260045260246000fd5b500490565b600060208284031215610eb357600080fd5b5051919050565b634e487b7160e01b600052604160045260246000fd5b6000816000190483118215151615610eea57610eea610e69565b500290565b600082821015610f0157610f01610e69565b500390565b60008219821115610f1957610f19610e69565b500190565b634e487b7160e01b600052603260045260246000fd5b600060018201610f4657610f46610e69565b5060010190565b6001600160a01b038316815260606020808301829052835191830182905260009184820191906080850190845b81811015610f9657845183529383019391830191600101610f7a565b50508481036040860152600081528181019350505050939250505056fea2646970667358221220ad415116a37f44e52efa6c753f3d9608170fca1940a052cb9c0bb2d8ab56c92764736f6c634300080d0033",
+  "deployedBytecode": "0x6080604052600436106100fe5760003560e01c8063ae42298811610095578063cd38347f11610064578063cd38347f1461026c578063debb2de114610283578063ea61226c14610296578063fbfa77cf146102e2578063fc0c546a1461031657600080fd5b8063ae42298814610200578063af760d6c14610213578063b381a81114610228578063b9186d7d1461023f57600080fd5b80636a627842116100d15780636a6278421461019c5780637c5e2795146101af5780639153e548146101ca5780639443792c146101e057600080fd5b8063150b7a021461010357806317d70f7c1461014d578063248b71fc14610171578063541508ed14610186575b600080fd5b34801561010f57600080fd5b5061012f61011e366004610d3d565b630a85bd0160e11b95945050505050565b6040516001600160e01b031990911681526020015b60405180910390f35b34801561015957600080fd5b5061016360005481565b604051908152602001610144565b61018461017f366004610dd8565b61034a565b005b34801561019257600080fd5b5061016361043b81565b6101846101aa366004610e02565b61035a565b3480156101bb57600080fd5b5061016366764e2c6f05400081565b3480156101d657600080fd5b50610163611af481565b3480156101ec57600080fd5b506101846101fb366004610e24565b610368565b61018461020e366004610e02565b610554565b34801561021f57600080fd5b50610163600a81565b34801561023457600080fd5b50610163620f4c0081565b34801561024b57600080fd5b5061016361025a366004610e50565b60016020526000908152604090205481565b34801561027857600080fd5b50610163620f424081565b610184610291366004610dd8565b61063c565b3480156102a257600080fd5b506102ca7f000000000000000000000000000000000000000000000000000000000000000081565b6040516001600160a01b039091168152602001610144565b3480156102ee57600080fd5b506102ca7f000000000000000000000000000000000000000000000000000000000000000081565b34801561032257600080fd5b506102ca7f000000000000000000000000000000000000000000000000000000000000000081565b6103568282600061071c565b5050565b610365816000610a24565b50565b604051632142170760e11b8152336004820152306024820152604481018490527f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316906342842e0e90606401600060405180830381600087803b1580156103d657600080fd5b505af11580156103ea573d6000803e3d6000fd5b5050604051632510de4b60e21b81526004810186905260248101859052604481018490527f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03169250639443792c9150606401600060405180830381600087803b15801561045e57600080fd5b505af1158015610472573d6000803e3d6000fd5b50505060008481526001602052604081205490915061049390600390610e7f565b604051627b8a6760e11b8152600481018290523360248201529091507f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03169062f714ce90604401600060405180830381600087803b1580156104fc57600080fd5b505af1158015610510573d6000803e3d6000fd5b50505050837f410c5c259085cde81fedf70c1aa308ec839373c26e9b7ada6560a2aca0254eb68260405161054691815260200190565b60405180910390a250505050565b6040516370a0823160e01b81523360048201526000907f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316906370a0823190602401602060405180830381865afa1580156105bb573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906105df9190610ea1565b116106315760405162461bcd60e51b815260206004820152601d60248201527f53434f3a20444953434f554e545f544f4b454e5f4e4f545f4f574e454400000060448201526064015b60405180910390fd5b610365816001610a24565b6040516370a0823160e01b81523360048201526000907f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316906370a0823190602401602060405180830381865afa1580156106a3573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906106c79190610ea1565b116107145760405162461bcd60e51b815260206004820152601d60248201527f53434f3a20444953434f554e545f544f4b454e5f4e4f545f4f574e45440000006044820152606401610628565b610356828260015b600082116107625760405162461bcd60e51b81526020600482015260136024820152720a6869e7440929cac82989288be988a9c8ea89606b1b6044820152606401610628565b6000805490808467ffffffffffffffff81111561078157610781610eba565b6040519080825280602002602001820160405280156107aa578160200160208202803683370190505b50905060005b858110156108b757611af484106107fb5760405162461bcd60e51b815260206004820152600f60248201526e14d0d3ce8810531317d35253951151608a1b6044820152606401610628565b600061080685610c5e565b9050851561083257606461081b600a83610ed0565b6108259190610e7f565b61082f9082610eef565b90505b61083c8185610f06565b9350847fcc9c58b575eabd3f6a1ee653e91fcea3ff546867ffc3782a3bbca1f9b6dbb8df8260405161087091815260200190565b60405180910390a28483838151811061088b5761088b610f1e565b6020908102919091010152846108a081610f34565b9550505080806108af90610f34565b9150506107b0565b506000839055348211156109055760405162461bcd60e51b81526020600482015260156024820152740a6869e7440929ca6aa8c8c9286928a9ca8be8aa89605b1b6044820152606401610628565b6040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000169083156108fc029084906000818181858888f1935050505015801561095b573d6000803e3d6000fd5b508134111561099c57336108fc6109728434610eef565b6040518115909202916000818181858888f1935050505015801561099a573d6000803e3d6000fd5b505b604051631143124160e11b81526001600160a01b037f000000000000000000000000000000000000000000000000000000000000000016906322862482906109ea9089908590600401610f4d565b600060405180830381600087803b158015610a0457600080fd5b505af1158015610a18573d6000803e3d6000fd5b50505050505050505050565b600054611af48110610a6a5760405162461bcd60e51b815260206004820152600f60248201526e14d0d3ce8810531317d35253951151608a1b6044820152606401610628565b610a75816001610f06565b6000908155610a8382610c5e565b90508215610aaf576064610a98600a83610ed0565b610aa29190610e7f565b610aac9082610eef565b90505b80341015610af75760405162461bcd60e51b81526020600482015260156024820152740a6869e7440929ca6aa8c8c9286928a9ca8be8aa89605b1b6044820152606401610628565b6040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000169082156108fc029083906000818181858888f19350505050158015610b4d573d6000803e3d6000fd5b5080341115610b8e57336108fc610b648334610eef565b6040518115909202916000818181858888f19350505050158015610b8c573d6000803e3d6000fd5b505b817fcc9c58b575eabd3f6a1ee653e91fcea3ff546867ffc3782a3bbca1f9b6dbb8df82604051610bc091815260200190565b60405180910390a26040516394d008ef60e01b81526001600160a01b0385811660048301526024820184905260606044830152600060648301527f000000000000000000000000000000000000000000000000000000000000000016906394d008ef90608401600060405180830381600087803b158015610c4057600080fd5b505af1158015610c54573d6000803e3d6000fd5b5050505050505050565b6000610f98821015610cb95750600081815260016020526040902054620f4240610c8b620f4c0083610ed0565b610c959190610e7f565b60016000610ca38583610f06565b8152602081019190915260400160002055919050565b60016000836002610ccc610f9882610ed0565b610cd69190610eef565b610ce09190610eef565b81526020019081526020016000205468051493c4ea2444937a610d039190610eef565b9050610f98821115610d215760008281526001602052604090208190555b919050565b80356001600160a01b0381168114610d2157600080fd5b600080600080600060808688031215610d5557600080fd5b610d5e86610d26565b9450610d6c60208701610d26565b935060408601359250606086013567ffffffffffffffff80821115610d9057600080fd5b818801915088601f830112610da457600080fd5b813581811115610db357600080fd5b896020828501011115610dc557600080fd5b9699959850939650602001949392505050565b60008060408385031215610deb57600080fd5b610df483610d26565b946020939093013593505050565b600060208284031215610e1457600080fd5b610e1d82610d26565b9392505050565b600080600060608486031215610e3957600080fd5b505081359360208301359350604090920135919050565b600060208284031215610e6257600080fd5b5035919050565b634e487b7160e01b600052601160045260246000fd5b600082610e9c57634e487b7160e01b600052601260045260246000fd5b500490565b600060208284031215610eb357600080fd5b5051919050565b634e487b7160e01b600052604160045260246000fd5b6000816000190483118215151615610eea57610eea610e69565b500290565b600082821015610f0157610f01610e69565b500390565b60008219821115610f1957610f19610e69565b500190565b634e487b7160e01b600052603260045260246000fd5b600060018201610f4657610f46610e69565b5060010190565b6001600160a01b038316815260606020808301829052835191830182905260009184820191906080850190845b81811015610f9657845183529383019391830191600101610f7a565b50508481036040860152600081528181019350505050939250505056fea2646970667358221220ad415116a37f44e52efa6c753f3d9608170fca1940a052cb9c0bb2d8ab56c92764736f6c634300080d0033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 1809,
+        "contract": "contracts/NFTSigmoidCurveOffering.sol:NFTSigmoidCurveOffering",
+        "label": "tokenId",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 1813,
+        "contract": "contracts/NFTSigmoidCurveOffering.sol:NFTSigmoidCurveOffering",
+        "label": "priceOf",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_uint256,t_uint256)"
+      }
+    ],
+    "types": {
+      "t_mapping(t_uint256,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}
