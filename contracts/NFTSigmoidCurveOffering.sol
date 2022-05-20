@@ -18,6 +18,7 @@ contract NFTSigmoidCurveOffering is IERC721Receiver {
     uint256 internal constant INFLECTION_POINT = 3992;
 
     address public immutable vault;
+    address public immutable minter;
     address public immutable token;
     address public immutable discountToken;
 
@@ -33,12 +34,14 @@ contract NFTSigmoidCurveOffering is IERC721Receiver {
     }
 
     constructor(
-        address _token,
         address _vault,
+        address _minter,
+        address _token,
         address _discountToken
     ) {
-        token = _token;
         vault = _vault;
+        minter = _minter;
+        token = _token;
         discountToken = _discountToken;
 
         tokenId = TOKEN_ID_MIN;
@@ -85,7 +88,7 @@ contract NFTSigmoidCurveOffering is IERC721Receiver {
             payable(msg.sender).transfer(msg.value - totalPrice);
         }
 
-        INFT(token).mintBatch(to, tokenIds, "");
+        INFT(minter).mintBatch(to, tokenIds, "");
     }
 
     function mintDiscounted(address to) external payable discountApplied {
@@ -112,7 +115,7 @@ contract NFTSigmoidCurveOffering is IERC721Receiver {
 
         emit Mint(_tokenId, price);
 
-        INFT(token).mint(to, _tokenId, "");
+        INFT(minter).mint(to, _tokenId, "");
     }
 
     function _price(uint256 _tokenId) internal returns (uint256 price) {

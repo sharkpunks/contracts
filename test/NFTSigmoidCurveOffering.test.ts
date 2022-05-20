@@ -16,16 +16,21 @@ const setupTest = async () => {
     const signers = await ethers.getSigners();
     const [deployer, alice, bob, carol] = signers;
 
+    const VaultContract = await ethers.getContractFactory("ETHVault");
+    const vault = (await VaultContract.deploy()) as ETHVault;
+
     const NFTContract = await ethers.getContractFactory("NFT");
     const token = (await NFTContract.deploy("Sharkpunks", "NOM")) as NFT;
     const discount = (await NFTContract.deploy("Stupid Mortys", "MORTY")) as NFT;
     await discount.mintBatch(deployer.address, [0, 1, 2], "0x");
 
-    const VaultContract = await ethers.getContractFactory("ETHVault");
-    const vault = (await VaultContract.deploy()) as ETHVault;
-
     const SCOContract = await ethers.getContractFactory("NFTSigmoidCurveOffering");
-    const sco = (await SCOContract.deploy(token.address, vault.address, discount.address)) as NFTSigmoidCurveOffering;
+    const sco = (await SCOContract.deploy(
+        vault.address,
+        token.address,
+        token.address,
+        discount.address
+    )) as NFTSigmoidCurveOffering;
     await token.transferOwnership(sco.address);
     await vault.setOperator(sco.address, true);
 
@@ -96,7 +101,7 @@ describe("NFTSigmoidCurveOffering", function () {
             const amount = priceOf[tokenId].div(3);
             totalPrice = totalPrice.sub(amount);
             expect(event.args.amount).eq(amount);
-            expect(token.ownerOf(tokenId)).to.be.reverted;
+            await expect(token.ownerOf(tokenId)).to.be.reverted;
             expect(await token.balanceOf(alice.address)).eq(count);
             expect(await provider.getBalance(vault.address)).eq(totalPrice);
         }
@@ -105,9 +110,10 @@ describe("NFTSigmoidCurveOffering", function () {
     it("should mint() with discount", async function () {
         const { sco, deployer, alice, discount } = await setupTest();
 
-        await discount.connect(deployer).transferFrom(deployer.address, alice.address, 0);
-
         const price = INITIAL_PRICE;
+        await expect(sco.connect(alice).mintDiscounted(alice.address, { value: price })).to.be.reverted;
+
+        await discount.connect(deployer).transferFrom(deployer.address, alice.address, 0);
         const tx = await sco.connect(alice).mintDiscounted(alice.address, { value: price });
         const { events } = await tx.wait();
 
