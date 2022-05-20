@@ -102,6 +102,19 @@ describe("NFTSigmoidCurveOffering", function () {
         }
     });
 
+    it("should mint() with discount", async function () {
+        const { sco, deployer, alice, discount } = await setupTest();
+
+        await discount.connect(deployer).transferFrom(deployer.address, alice.address, 0);
+
+        const price = INITIAL_PRICE;
+        const tx = await sco.connect(alice).mintDiscounted(alice.address, { value: price });
+        const { events } = await tx.wait();
+
+        const event = events.find(e => e.address === sco.address && e.event === "Mint");
+        expect(event.args.price).eq(price.sub(price.div(10)));
+    });
+
     it("should mintBatch() one by one", async function () {
         const { sco, token, vault, alice } = await setupTest();
 
@@ -173,6 +186,27 @@ describe("NFTSigmoidCurveOffering", function () {
 
             expect(await token.balanceOf(alice.address)).eq(count);
             expect(await provider.getBalance(vault.address)).eq(totalPrice);
+        }
+    });
+
+    it("should mintBatch() with discount", async function () {
+        const { sco, deployer, alice, discount } = await setupTest();
+
+        await discount.connect(deployer).transferFrom(deployer.address, alice.address, 0);
+
+        const tx = await sco
+            .connect(alice)
+            .mintBatchDiscounted(alice.address, 10, { value: constants.WeiPerEther.mul(10000) });
+        const { events } = await tx.wait();
+
+        let price = INITIAL_PRICE;
+        for (let tokenId = TOKEN_ID_MIN; tokenId < TOKEN_ID_MIN + 10; tokenId++) {
+            const event = events.find(
+                e => e.address === sco.address && e.event === "Mint" && e.args.tokenId.eq(tokenId)
+            );
+            expect(event.args.price).eq(price.sub(price.div(10)));
+
+            price = price.mul(INFLATION_RATE).div(INFLATION_BASE);
         }
     });
 });
