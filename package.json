@@ -1,13 +1,13 @@
 {
-  "name": "@levxdao/hardhat-foundation",
+  "name": "@sharkpunks/contracts",
   "description": "",
   "keywords": [
     "levx",
     "levx-dao"
   ],
-  "homepage": "https://github.com/levxdao/hardhat-foundation#readme",
+  "homepage": "https://github.com/sharkpunks/contracts#readme",
   "bugs": {
-    "url": "https://github.com/levxdao/hardhat-foundation/issues",
+    "url": "https://github.com/sharkpunks/contracts/issues",
     "email": "team@levx.io"
   },
   "license": "WTFPL",
