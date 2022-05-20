@@ -5,6 +5,12 @@ pragma solidity >=0.5.0;
 interface INFT {
     function balanceOf(address owner) external view returns (uint256 balance);
 
+    function safeTransferFrom(
+        address from,
+        address to,
+        uint256 tokenId
+    ) external;
+
     function mint(
         address to,
         uint256 tokenId,
@@ -15,5 +21,11 @@ interface INFT {
         address to,
         uint256[] calldata tokenIds,
         bytes calldata data
+    ) external;
+
+    function burn(
+        uint256 tokenId,
+        uint256 label,
+        bytes32 data
     ) external;
 }

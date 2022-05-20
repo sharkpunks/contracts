@@ -2,14 +2,17 @@
 
 pragma solidity ^0.8.13;
 
-import "./interfaces/INFT.sol";
+import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 
-contract NFTSigmoidCurveOffering {
+import "./interfaces/INFT.sol";
+import "./interfaces/IETHVault.sol";
+
+contract NFTSigmoidCurveOffering is IERC721Receiver {
     uint256 public constant TOKEN_ID_MIN = 1083;
     uint256 public constant TOKEN_ID_MAX = 6900;
     uint256 public constant INITIAL_PRICE = 333 * 10**14;
-    uint256 public constant INFLATION_RATE = 2496;
-    uint256 public constant INFLATION_BASE = 10000;
+    uint256 public constant INFLATION_RATE = 1002496;
+    uint256 public constant INFLATION_BASE = 1000000;
     uint256 public constant DISCOUNT_PERCENTAGE = 10;
     uint256 internal constant FINAL_PRICE = 93716465580792648570;
     uint256 internal constant INFLECTION_POINT = 3992;
@@ -19,10 +22,10 @@ contract NFTSigmoidCurveOffering {
     address public immutable discountToken;
 
     uint256 public tokenId;
-
-    mapping(uint256 => uint256) internal _priceHistory;
+    mapping(uint256 => uint256) public priceOf;
 
     event Mint(uint256 indexed tokenId, uint256 price);
+    event Burn(uint256 indexed tokenId, uint256 amount);
 
     modifier discountApplied {
         require(INFT(discountToken).balanceOf(msg.sender) > 0, "SCO: DISCOUNT_TOKEN_NOT_OWNED");
@@ -39,7 +42,7 @@ contract NFTSigmoidCurveOffering {
         discountToken = _discountToken;
 
         tokenId = TOKEN_ID_MIN;
-        _priceHistory[TOKEN_ID_MIN] = INITIAL_PRICE;
+        priceOf[TOKEN_ID_MIN] = INITIAL_PRICE;
     }
 
     function mintBatchDiscounted(address to, uint256 length) external payable discountApplied {
@@ -55,6 +58,8 @@ contract NFTSigmoidCurveOffering {
         uint256 length,
         bool discount
     ) internal {
+        require(length > 0, "SCO: INVALID_LENGTH");
+
         uint256 _tokenId = tokenId;
 
         uint256 totalPrice;
@@ -112,10 +117,36 @@ contract NFTSigmoidCurveOffering {
 
     function _price(uint256 _tokenId) internal returns (uint256 price) {
         if (_tokenId < INFLECTION_POINT) {
-            price = _priceHistory[_tokenId];
-            _priceHistory[_tokenId + 1] = (price * INFLATION_RATE) / INFLATION_BASE;
+            price = priceOf[_tokenId];
+            priceOf[_tokenId + 1] = (price * INFLATION_RATE) / INFLATION_BASE;
         } else {
-            price = FINAL_PRICE - _priceHistory[INFLECTION_POINT * 2 - 2 - _tokenId];
+            price = FINAL_PRICE - priceOf[INFLECTION_POINT * 2 - 2 - _tokenId];
+            if (_tokenId > INFLECTION_POINT) {
+                priceOf[_tokenId] = price;
+            }
         }
+    }
+
+    function burn(
+        uint256 _tokenId,
+        uint256 label,
+        bytes32 data
+    ) external {
+        INFT(token).safeTransferFrom(msg.sender, address(this), _tokenId);
+        INFT(token).burn(_tokenId, label, data);
+
+        uint256 amount = priceOf[_tokenId] / 3;
+        IETHVault(vault).withdraw(amount, msg.sender);
+
+        emit Burn(_tokenId, amount);
+    }
+
+    function onERC721Received(
+        address,
+        address,
+        uint256,
+        bytes calldata
+    ) external pure override returns (bytes4) {
+        return IERC721Receiver.onERC721Received.selector;
     }
 }
