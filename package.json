@@ -101,7 +101,8 @@
   },
   "dependencies": {
     "@levxdao/ve": "^1.1.0",
-    "@openzeppelin/contracts": "^4.6.0"
+    "@openzeppelin/contracts": "^4.6.0",
+    "@sushiswap/core": "^1.4.2"
   },
   "version": "1.2.2"
 }
