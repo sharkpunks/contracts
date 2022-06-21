@@ -23,8 +23,8 @@ contract VERewardDistributor is Ownable {
     mapping(uint256 => mapping(address => uint256)) public amountClaimed;
 
     event AddReward(uint256 amount, uint256 veSupply, uint256 block, uint256 deadline);
-    event Withdraw(uint256 rewardId, uint256 amount, address to);
-    event Claim(uint256 rewardId, uint256 amount, address to);
+    event Withdraw(uint256 indexed rewardId, uint256 amount, address recipient);
+    event Claim(uint256 indexed rewardId, address indexed account, uint256 amount, address recipient);
 
     constructor(address _vault, address _ve) {
         vault = _vault;
@@ -52,7 +52,7 @@ contract VERewardDistributor is Ownable {
         emit AddReward(amount, veSupply, blockNumber, deadline);
     }
 
-    function withdraw(uint256 rewardId, address to) external onlyOwner {
+    function withdraw(uint256 rewardId, address recipient) external onlyOwner {
         Reward storage reward = rewards[rewardId];
         require(!reward.withdrawn, "VERD: WITHDRAWN");
         require(reward.deadline <= block.timestamp, "VERD: NOT_EXPIRED");
@@ -60,11 +60,11 @@ contract VERewardDistributor is Ownable {
         reward.withdrawn = true;
 
         uint256 amount = reward.amount - reward.amountClaimed;
-        emit Withdraw(rewardId, amount, to);
-        payable(to).transfer(amount);
+        emit Withdraw(rewardId, amount, recipient);
+        payable(recipient).transfer(amount);
     }
 
-    function claim(uint256 rewardId, address to) external {
+    function claim(uint256 rewardId, address recipient) external {
         require(amountClaimed[rewardId][msg.sender] == 0, "VERD: CLAIMED");
 
         Reward storage reward = rewards[rewardId];
@@ -78,8 +78,8 @@ contract VERewardDistributor is Ownable {
         reward.amountClaimed += amount;
         amountClaimed[rewardId][msg.sender] = amount;
 
-        if (to == address(0)) to = msg.sender;
-        emit Claim(rewardId, amount, to);
-        payable(to).transfer(amount);
+        if (recipient == address(0)) recipient = msg.sender;
+        emit Claim(rewardId, msg.sender, amount, recipient);
+        payable(recipient).transfer(amount);
     }
 }
