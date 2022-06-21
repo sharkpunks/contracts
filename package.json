@@ -100,6 +100,7 @@
     "typescript": "^4.3.0"
   },
   "dependencies": {
+    "@levxdao/ve": "^1.1.0",
     "@openzeppelin/contracts": "^4.6.0"
   },
   "version": "1.1.0"

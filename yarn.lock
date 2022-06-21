@@ -1043,6 +1043,13 @@
     "@ethersproject/properties" "^5.3.0"
     "@ethersproject/strings" "^5.3.0"
 
+"@levxdao/ve@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@levxdao/ve/-/ve-1.1.0.tgz#b357acb6e53661760248868dd6124e222d4feac5"
+  integrity sha512-cvpDu9I7RnU9Lps4miR5FTo73nDhMFb+Pry8wCCw1C8EXJ4qUn+mjUFOHbj8TCczaT4/dGHlC5mNqk+vW1XOsg==
+  dependencies:
+    "@openzeppelin/contracts" "^4.6.0"
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
