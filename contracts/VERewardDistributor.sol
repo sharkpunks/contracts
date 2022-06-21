@@ -22,13 +22,18 @@ contract VERewardDistributor is Ownable {
     Reward[] public rewards;
     mapping(uint256 => mapping(address => uint256)) public amountClaimed;
 
-    event AddReward(uint256 amount, uint256 veSupply, uint256 block, uint256 deadline);
+    event Receive(address indexed from, uint256 amount);
+    event AddReward(uint256 indexed rewardId, uint256 amount, uint256 veSupply, uint256 block, uint256 deadline);
     event Withdraw(uint256 indexed rewardId, uint256 amount, address recipient);
     event Claim(uint256 indexed rewardId, address indexed account, uint256 amount, address recipient);
 
     constructor(address _vault, address _ve) {
         vault = _vault;
         ve = _ve;
+    }
+
+    receive() external payable {
+        emit Receive(msg.sender, msg.value);
     }
 
     function rewardsLength() external view returns (uint256) {
@@ -47,9 +52,10 @@ contract VERewardDistributor is Ownable {
         IETHVault(vault).withdraw(amount, address(this));
 
         uint256 veSupply = IVotingEscrow(ve).totalSupplyAt(blockNumber);
+        uint256 rewardId = rewards.length;
         rewards.push(Reward(amount, veSupply, blockNumber, deadline, 0, false));
 
-        emit AddReward(amount, veSupply, blockNumber, deadline);
+        emit AddReward(rewardId, amount, veSupply, blockNumber, deadline);
     }
 
     function withdraw(uint256 rewardId, address recipient) external onlyOwner {
