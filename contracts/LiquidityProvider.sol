@@ -66,12 +66,33 @@ contract LiquidityProvider is Ownable {
         emit SetLPRatio(_lpRatio);
     }
 
+    function addLiquidityAndSwap(
+        uint256 amount,
+        uint256 amountTokenInLP,
+        uint256 amountTokenMinLP,
+        uint256 amountETHMinLP,
+        uint256 amountETHInSwap,
+        uint256 amountTokenOutMinSwap
+    ) external onlyOwner {
+        _addLiquidity(amount, amountTokenInLP, amountTokenMinLP, amountETHMinLP);
+        _swap(amountETHInSwap, amountTokenOutMinSwap);
+    }
+
     function addLiquidity(
         uint256 amount,
         uint256 amountTokenIn,
         uint256 amountTokenMin,
         uint256 amountETHMin
     ) external onlyOwner {
+        _addLiquidity(amount, amountTokenIn, amountTokenMin, amountETHMin);
+    }
+
+    function _addLiquidity(
+        uint256 amount,
+        uint256 amountTokenIn,
+        uint256 amountTokenMin,
+        uint256 amountETHMin
+    ) internal {
         IETHVault(vault).withdraw(amount, address(this));
 
         uint256 amountETHIn = (amount * lpRatio) / (10**18);
@@ -118,6 +139,10 @@ contract LiquidityProvider is Ownable {
     }
 
     function swap(uint256 amountETHIn, uint256 amountTokenOutMin) external onlyOwner {
+        _swap(amountETHIn, amountTokenOutMin);
+    }
+
+    function _swap(uint256 amountETHIn, uint256 amountTokenOutMin) internal {
         require(amountETHIn <= address(this).balance, "LP: INSUFFICIENT_ETH");
 
         (uint256 reserveIn, uint256 reserveOut) = UniswapV2Library.getReserves(factory, weth, token);
