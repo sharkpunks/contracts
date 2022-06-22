@@ -49,8 +49,8 @@ contract LiquidityProvider is Ownable {
         weth = _weth;
         lpRatio = _lpRatio;
 
-        _pair = UniswapV2Library.pairFor(factory, weth, token);
-        (address token0, ) = UniswapV2Library.sortTokens(weth, token);
+        _pair = UniswapV2Library.pairFor(_factory, _weth, _token);
+        (address token0, ) = UniswapV2Library.sortTokens(_weth, _token);
         _token0 = token0;
     }
 
@@ -118,6 +118,8 @@ contract LiquidityProvider is Ownable {
     }
 
     function swap(uint256 amountETHIn, uint256 amountTokenOutMin) external onlyOwner {
+        require(amountETHIn <= address(this).balance, "LP: INSUFFICIENT_ETH");
+
         (uint256 reserveIn, uint256 reserveOut) = UniswapV2Library.getReserves(factory, weth, token);
         uint256 amountOut = UniswapV2Library.getAmountOut(amountETHIn, reserveIn, reserveOut);
         require(amountOut >= amountTokenOutMin, "LP: INSUFFICIENT_OUTPUT_AMOUNT");
